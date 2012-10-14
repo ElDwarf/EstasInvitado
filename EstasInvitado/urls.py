@@ -6,10 +6,6 @@ from django.conf import settings
 from django.contrib import admin
 admin.autodiscover()
 
-# Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
-
 urlpatterns = patterns('',
     url(r'^accounts/login/$', 'django.contrib.auth.views.login'),
     # url(r'^$', 'IntentoTreiky.views.home', name='home'),
@@ -33,4 +29,26 @@ urlpatterns = patterns('',
                    {'template': 'index.html'}, "home"),
     url(r'^home$', direct_to_template,
                    {'template': 'index.html'}, "home"),
+    url(r'^logout/$',
+        'apps.invitaciones.views.logoutuser', name='logoutuser'),
+    url(r'^write_pais/$',
+        'apps.invitaciones.views.write_pais', name='write_pais'),
+    url(r'^write_provincia/$',
+        'apps.invitaciones.views.write_provincia', name='write_provincia'),
+    url(r'^write_localidad/$',
+        'apps.invitaciones.views.write_localidad', name='write_localidad'),
+    url(r'^write_domicilio/$',
+        'apps.invitaciones.views.write_domicilio', name='write_domicilio'),
+    url(r'^write_familia/$',
+        'apps.invitaciones.views.write_familia', name='write_familia'),
+    url(r'^write_invitado/$',
+        'apps.invitaciones.views.write_invitado', name='write_invitado'),
+    url(r'^write_evento/$',
+        'apps.invitaciones.views.write_evento', name='write_evento'),
+    url(r'^write_evento/$',
+        'apps.invitaciones.views.write_evento', name='write_evento'),
+    url(r'^view_invitacion/$',
+        'apps.invitaciones.views.view_invitacion', name='view_invitacion'),
+    url(r'^new_user/$',
+        'apps.invitaciones.views.new_user', name='new_user'),
 )

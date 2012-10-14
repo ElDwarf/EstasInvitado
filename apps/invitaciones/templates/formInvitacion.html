@@ -1,0 +1,48 @@
+{% load bootstrap_toolkit %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+{% bootstrap_stylesheet_tag %}
+</head>
+<body>
+<div class="well"  style="background-image: url(http://images2.layoutsparks.com/1/164818/red-circles-black-design.jpg); height: 550px; width: 98%; border: 1px solid black;">
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        <div class="row show-grid">
+        <div class="span4">
+
+        </div>
+
+        <div class="span4">
+        <p>&nbsp;</p>
+        <form class="form-{{ layout }}" action="" method="post">
+        {% csrf_token %}
+        {{ form|as_bootstrap:layout }}
+        {% if layout == "horizontal" %}
+            <p class="form-actions">
+                <input type="submit" value="Ver Invitacion" class="btn btn-info">
+            </p>
+        {% else %}
+            <input type="submit" value="Ver Invitacion" class="btn btn-info">
+        {% endif %}
+        </form>
+        </div>
+        <div class="span4">
+
+        </div>
+        </div>
+        </br>
+
+    </div>
+</body>
+</html>

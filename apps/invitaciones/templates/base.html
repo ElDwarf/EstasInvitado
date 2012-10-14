@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>Treiky</title>
+    <title>EstasInvitado.com.ar</title>
     <meta name="description" content="">
     <meta name="author" content="Dalmasso Pablo">
     {% bootstrap_stylesheet_tag %}
@@ -20,39 +20,44 @@
     {% block extra_head %}{% endblock %}
 </head>
 
-<body brcolor="#FF52546">
+<body>
 
 <div class="navbar navbar-fixed-top">
     <div class="navbar-inner">
-        {% block menu %}Empty page{% endblock %}
-    </div>
-</div>
-
-<div class="container">
-
-    <div class="container">
-            <a class="brand" href="#">Estas Invitado</a>
+        <div class="container">
+            <a class="brand" href="{% url home %}">EstasInvitado.com.ar</a>
             <ul class="nav">
-                <li><a href="#" class=""><span class="new-wrapper"><i class="icon-home"></i></span> Index</a></li>
+                <li><a href="{% url home %}" class=""><span class="new-wrapper"><i class="icon-home"></i></span> Index</a></li>
                     {% if user.is_authenticated %}
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                            Requerimiento
+                            <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown">
+                            Evento
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                            <li><a href="#"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nuevo Requerimiento</a></li>
-                            <li><a href="#"><span class="new-wrapper"><i class="icon-list"></i></span> Listar Requerimientos</a></li>
+                            <li><a href="{% url write_evento %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nuevo Evento</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                                Proyecto
+                            <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown">
+                            Invitados
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                            <li><a href="#"><span class="new-wrapper"><i class="icon-pencil"></i></span> Registrar Proyectos</a></li>
-                            <li><a href="#"><span class="new-wrapper"><i class="icon-tasks"></i></span> Editar Proyectos</a></li>
+                            <li><a href="{% url write_familia %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nueva Familia</a></li>
+                            <li><a href="{% url write_invitado %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nueva Invitado</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown">
+                            Domicilio
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                            <li><a href="{% url write_pais %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nuevo Pais</a></li>
+                            <li><a href="{% url write_provincia %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nueva Provincia</a></li>
+                            <li><a href="{% url write_localidad %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nueva Localidad</a></li>
+                            <li><a href="{% url write_domicilio %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nuevo Domicilio</a></li>
                             </ul>
                         </li>
                     {% else %}
@@ -72,23 +77,19 @@
                         <li><a href="" > </a></li>
                         <li><a href="" > </a></li>
                         <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="/accounts/login/"><span class="new-wrapper"><i class="icon-user"></i></span> Login</a></li>
+                        <li class="dropdown">
+                            <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown"><span class="new-wrapper"><i class="icon-user"></i>
+                            Usuario
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                            <li><a href="/accounts/login/"><span class="new-wrapper"><i class="icon-user"></i></span> Login</a></li>
+                            <li><a href="{% url new_user %}"><span class="new-wrapper"><i class="icon-user"></i></span> Registrar</a></li>
+                            </ul>
+                        </li>
+
                     {% endif %}
                     {% if user.is_authenticated %}
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
-                        <li><a href="" > </a></li>
                         <li><a href="" > </a></li>
                         <li><a href="" > </a></li>
                         <li><a href="" > </a></li>
@@ -109,12 +110,22 @@
                     {% endif %}
             </ul>
         </div>
-
+    </div>
+</div>
+<!--<header class="jumbotron subhead" id="overview">
+  <div class="container" style="background-image: url(http://static.myopera.com/community/graphics/speeddials/Opera-Background-Colored-Lights.jpg); height: 200px; width: 100%; border: 1px solid black;">
+    <h1>Getting started</h1>
+    <p class="lead">Overview of the project, its contents, and how to get started with a simple template.</p>
+  </div>
+</header>-->
+<div class="container">
+    </br>
+    {% block content %}Empty page{% endblock %}
     <p><hr></p>
 
     <footer class="row">
         <div class="span6">
-            <p>Treiky V 0.1</p>
+            <p>EstasInvitado.com.ar V 0.1</p>
         </div>
         <div class="span6" style="text-align:right">
             <p>
