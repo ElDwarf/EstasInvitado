@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
-from apps.invitaciones.forms import newPaisForm, newProvinciaForm, newLocalidadForm, newDomicilioForm, newFamiliaForm, newInvitadoForm, newEventoForm, viewFamiliaForm
+from apps.invitaciones.forms import newPaisForm, newProvinciaForm, newLocalidadForm, newDomicilioForm, newFamiliaForm, newInvitadoForm, newEventoForm, viewInvitacionForm
 
 
 def new_user(request):
@@ -20,11 +20,23 @@ def new_user(request):
         'title': 'Alta de usuario:',
         }))
 
+
 def logoutuser(request):
+    layout = 'vertical'
     logout(request)
+    if request.method == 'POST':
+        form = viewInvitacionForm(request.POST)
+        if form.is_valid():
+            request.session['codInvitacion'] = request.POST.get('codInvitacion', '')
+            print request.session['codInvitacion']
+    else:
+        form = viewInvitacionForm()
     return render_to_response('index.html', RequestContext(request, {
         'mensaje': 'El proyecto se dio del alta correctamente',
+        'form': form,
+        'layout': layout,
         }))
+
 
 @login_required
 def write_pais(request):
@@ -33,6 +45,7 @@ def write_pais(request):
     if request.method == 'POST':
         form = newPaisForm(request.POST)
         if form.is_valid():
+            request.session['Pais'] = 'Pais: Argentina'
             new_req = form.save(commit=False)
             new_req.save()
     else:
@@ -154,16 +167,39 @@ def write_evento(request):
 
 def view_invitacion(request):
     layout = 'vertical'
-
     if request.method == 'POST':
-        form = viewFamiliaForm(request.POST)
+        form = viewInvitacionForm(request.POST)
         if form.is_valid():
             new_req = form.save(commit=False)
             print new_req
+            request.session['nroInvitacion'] = request.POST.get('project', '')
             #new_req.save()
     else:
-        form = viewFamiliaForm()
+        form = viewInvitacionForm()
     return render_to_response('formInvitacion.html', RequestContext(request, {
+        'form': form,
+        'layout': layout,
+        }))
+
+
+def galery(request):
+    return render_to_response('galery.html', RequestContext(request, {
+        'mensaje': 'El proyecto se dio del alta correctamente',
+        }))
+
+
+def index(request):
+    layout = 'vertical'
+
+    if request.method == 'POST':
+        form = viewInvitacionForm(request.POST)
+        if form.is_valid():
+            request.session['codInvitacion'] = request.POST.get('codInvitacion', '')
+            print request.session['codInvitacion']
+    else:
+        form = viewInvitacionForm()
+    return render_to_response('index.html', RequestContext(request, {
+        'mensaje': 'El proyecto se dio del alta correctamente',
         'form': form,
         'layout': layout,
         }))

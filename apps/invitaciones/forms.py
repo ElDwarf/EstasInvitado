@@ -107,9 +107,9 @@ class newEventoForm(ModelForm):
         fields = ('nombre', 'domicilio', 'fechaevento', 'description', 'mensajeinvitacion')
 
 
-class viewFamiliaForm(ModelForm):
+class viewInvitacionForm(ModelForm):
     def __init__(self, *args, **kwargs):
-        super(viewFamiliaForm, self).__init__(*args, **kwargs)
+        super(viewInvitacionForm, self).__init__(*args, **kwargs)
         self.fields['codInvitacion'].label = "Ingrese el codigo de su invitacion"
 
     class Meta:
@@ -118,3 +118,4 @@ class viewFamiliaForm(ModelForm):
             'codInvitacion': TextInput(),
         }
         fields = ('codInvitacion',)
+

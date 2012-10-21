@@ -71,6 +71,7 @@ class Familia(models.Model):
         return "Familia: %s" % (
             self.nombre,)
 
+
 class Invitados(models.Model):
     """
     Model to represent the requerimiento.
@@ -84,3 +85,22 @@ class Invitados(models.Model):
     def __unicode__(self):
         return "%s, %s - Fam: %s" % (
             self.apellido, self.nombre, self.familia.nombre)
+
+
+class Galeria(models.Model):
+    evento = models.ForeignKey(Evento)
+    nombre = models.TextField(max_length=10)
+    descripcion = models.TextField(max_length=200)
+    urlfoto = models.TextField()
+
+    def __unicode__(self):
+        return "%s" %(self.nombre)
+
+
+
+class Invitacion(models.Model):
+    evento = models.ForeignKey(Evento)
+    mensaje1 = models.TextField(max_length=300)
+    mensaje2 = models.TextField(max_length=300)
+    mensaje3 = models.TextField(max_length=300)
+    cuenta = models.TextField(max_length=20)

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 *-*
 from django.contrib import admin
-from apps.invitaciones.models import Pais, Provincia, Localidad, Domicilio, Evento, Familia, Invitados
+from apps.invitaciones.models import Pais, Provincia, Localidad, Domicilio, Evento, Familia, Invitados, Galeria
 
 
 class provinciaAdmin(admin.ModelAdmin):
@@ -40,3 +40,4 @@ admin.site.register(Domicilio, domicilioAdmin)
 admin.site.register(Evento, eventoAdmin)
 admin.site.register(Familia, familiaAdmin)
 admin.site.register(Invitados, invitadosAdmin)
+admin.site.register(Galeria)
