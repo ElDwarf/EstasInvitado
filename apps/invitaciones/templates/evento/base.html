@@ -22,18 +22,18 @@
 
 <body>
 
-<div class="navbar navbar-fixed-top">
+<div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="{% url homeevn %}">EstasInvitado.com.ar</a>
+            <a class="brand" href="{% url home %}">EstasInvitado.com.ar</a>
             <ul class="nav">
-                <li><a href="{% url homeevn %}" class=""><span class="new-wrapper"><i class="icon-home"></i></span> Index</a></li>
-                <li><a href="{% url galery %}" class=""><span class="new-wrapper"><i class="icon-picture"></i></span> Galeria</a></li>
-                <li><a href="{% url lugar %}" class=""><span class="new-wrapper"><i class="icon-glass"></i></span> El Lugar</a></li>
-                <li><a href="{% url confirmar %}" class=""><span class="new-wrapper"><i class="icon-thumbs-up"></i></span> Confirmar Presencia</a></li>
-                <li><a href="{% url tarjeta %}" class=""><span class="new-wrapper"><i class="icon-print"></i></span> Imprimir Tarjeta</a></li>
+                <li><a href="{% url homeevn %}" class=""><span class="new-wrapper"><i class="icon-home icon-white"></i></span> Index</a></li>
+                <li><a href="{% url galery %}" class=""><span class="new-wrapper"><i class="icon-picture icon-white"></i></span> Galeria</a></li>
+                <li><a href="{% url lugar %}" class=""><span class="new-wrapper"><i class="icon-glass icon-white"></i></span> El Lugar</a></li>
+                <li><a href="{% url confirmar %}" class=""><span class="new-wrapper"><i class="icon-thumbs-up icon-white"></i></span> Confirmar Presencia</a></li>
+                <li><a href="{% url tarjeta %}" class=""><span class="new-wrapper"><i class="icon-print icon-white"></i></span> Imprimir Tarjeta</a></li>
                 <li class="dropdown">
-                    <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown"><span class="new-wrapper"><i class="icon-user"></i>
+                    <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown"><span class="new-wrapper"><i class="icon-user icon-white"></i>
                     Usuario
                         <b class="caret"></b>
                     </a>
@@ -46,8 +46,21 @@
         </div>
     </div>
 </div>
+</br>
+<!-- Docs nav
+    ================================================== -->
+    <div class="row">
+      <div class="span3 bs-docs-sidebar">
+      <div class="well sidebar-nav">
+        <ul class="nav nav-list bs-docs-sidenav">
+<li><a href="{% url homeevn %}" class=""><span class="new-wrapper"><i class="icon-home"></i></span> Index</a></li>
+                <li><a href="{% url galery %}" class=""><span class="new-wrapper"><i class="icon-picture"></i></span> Galeria</a></li>
+                <li><a href="{% url lugar %}" class=""><span class="new-wrapper"><i class="icon-glass"></i></span> El Lugar</a></li>
+                <li><a href="{% url confirmar %}" class=""><span class="new-wrapper"><i class="icon-thumbs-up"></i></span> Confirmar Presencia</a></li>
+                <li><a href="{% url tarjeta %}" class=""><span class="new-wrapper"><i class="icon-print"></i></span> Imprimir Tarjeta</a></li>        </ul>
+      </div>
+      </div>
 <div class="container">
-    </br>
 
     {% block content %}Empty page{% endblock %}
     <p><hr></p>
