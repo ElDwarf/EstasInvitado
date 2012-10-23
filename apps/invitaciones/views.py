@@ -182,11 +182,6 @@ def view_invitacion(request):
         }))
 
 
-def galery(request):
-    return render_to_response('galery.html', RequestContext(request, {
-        'mensaje': 'El proyecto se dio del alta correctamente',
-        }))
-
 
 def index(request):
     layout = 'vertical'
@@ -196,10 +191,63 @@ def index(request):
         if form.is_valid():
             request.session['codInvitacion'] = request.POST.get('codInvitacion', '')
             print request.session['codInvitacion']
+        return render_to_response('evento/index.html', RequestContext(request, {
+            'mensaje': 'El proyecto se dio del alta correctamente',
+            'form': form,
+            'layout': layout,
+            }))
+
     else:
         form = viewInvitacionForm()
     return render_to_response('index.html', RequestContext(request, {
         'mensaje': 'El proyecto se dio del alta correctamente',
         'form': form,
         'layout': layout,
+        }))
+
+
+def indexevn(request):
+    layout = 'vertical'
+
+    if request.method == 'POST':
+        form = viewInvitacionForm(request.POST)
+        if form.is_valid():
+            request.session['codInvitacion'] = request.POST.get('codInvitacion', '')
+            print request.session['codInvitacion']
+        return render_to_response('evento/index.html', RequestContext(request, {
+            'mensaje': 'El proyecto se dio del alta correctamente',
+            'form': form,
+            'layout': layout,
+            }))
+
+    else:
+        form = viewInvitacionForm()
+    return render_to_response('evento/index.html', RequestContext(request, {
+        'mensaje': 'El proyecto se dio del alta correctamente',
+        'form': form,
+        'layout': layout,
+        }))
+
+
+def galery(request):
+    return render_to_response('evento/galery.html', RequestContext(request, {
+        'mensaje': 'El proyecto se dio del alta correctamente',
+        }))
+
+
+def confirmar(request):
+    return render_to_response('evento/confirmar.html', RequestContext(request, {
+        'mensaje': 'El proyecto se dio del alta correctamente',
+        }))
+
+
+def lugar(request):
+    return render_to_response('evento/lugar.html', RequestContext(request, {
+        'mensaje': 'El proyecto se dio del alta correctamente',
+        }))
+
+
+def tarjeta(request):
+    return render_to_response('evento/tarjeta.html', RequestContext(request, {
+        'mensaje': 'El proyecto se dio del alta correctamente',
         }))

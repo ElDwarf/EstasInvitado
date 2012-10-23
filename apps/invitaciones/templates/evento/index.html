@@ -1,0 +1,63 @@
+{% extends "evento/base.html" %}
+
+{% load bootstrap_toolkit %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <div class="well">
+        <h1>EstasInvitado.com.ar</h1>
+        <p>EstasInvitado.com.ar, es un sistema que te permite generar tarjetas virguales, bla, bla</p>
+        </br>
+        </br>
+        </br>
+        </br>
+    </div>
+    {% else %}
+    <div class="well">
+        <h1>{{ title }}</h1>
+        <form class="form-{{ layout }}" action="" method="post">
+        {% csrf_token %}
+        {{ form|as_bootstrap:layout }}
+        {% if layout == "horizontal" %}
+            <p class="form-actions">
+                <input type="submit" value="Solicitar" class="btn btn-inverse">
+            </p>
+        {% else %}
+            <input type="submit" value="Solicitar" class="btn btn-inverse">
+        {% endif %}
+    </form>
+        </br>
+        </br>
+    </div>
+    <!--<iframe width="100%" height="550px" scrolling="no" frameborder="0" src="{% url view_invitacion %}" target="_top"> </iframe>-->
+    {% endif %}
+    {% if user.is_authenticated %}
+    <div class="row">
+        <div class="span4">
+        <div class="well">
+            <h3>Generar Evnetos</h3>
+            <p>Este sistema le permitira mantenerce en contacto con su proveedor permitiendole registrar sus nececidades de forma agil y facil.</p>
+            <p><a class="btn btn-inverse" href="{% url write_evento %}">Organizar...</a></p>
+        </div>
+        </div>
+        <div class="span4">
+        <div class="well">
+            <h3>Lista invitados</h3>
+            <p>Contara con una lista ordenada y gestionable de los requerimientos que tiene su cliente.</p>
+            </br>
+            <p><a class="btn btn-inverse" href="#    ">Ver Requerimientos &raquo;</a></p>
+        </div>
+        </div>
+        <div class="span4">
+        <div class="well">
+            <h3>Alta de Usuario</h3>
+            <p>Para poder registrar requerimiento o ver los existentes requerira tener un usuario registrado</p>
+            </br>
+            <p><a class="btn btn-inverse" href="#">Darme de Alta &raquo;</a></p>
+        </div>
+        </div>
+    </div>
+
+    <p>Espero lo que lo disfrutes mucho.</p>
+    {% endif %}
+{% endblock %}
