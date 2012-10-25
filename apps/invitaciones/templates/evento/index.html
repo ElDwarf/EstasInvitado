@@ -13,19 +13,29 @@
         </br>
     </div>
     {% else %}
-    <div class="well">
+    <div class="well" style="background: url(media/img/fondo.png) no-repeat center top;">
+    </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+    <div class="row">
+        <div class="span4">
+        </div>
+        <div class="span4">
+        {{ request.session.codInvitacion }}
         <h1>{{ title }}</h1>
         <form class="form-{{ layout }}" action="" method="post">
         {% csrf_token %}
         {{ form|as_bootstrap:layout }}
         {% if layout == "horizontal" %}
             <p class="form-actions">
-                <input type="submit" value="Solicitar" class="btn btn-inverse">
+                <input type="submit" value="Solicitar" class="btn btn-danger">
             </p>
         {% else %}
-            <input type="submit" value="Solicitar" class="btn btn-inverse">
+            <input type="submit" value="Solicitar" class="btn btn-danger">
         {% endif %}
     </form>
+        </div>
+        <div class="span4">
+        </div>
+    </div>
         </br>
         </br>
     </div>

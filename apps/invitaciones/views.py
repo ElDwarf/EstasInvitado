@@ -208,7 +208,7 @@ def index(request):
 
 def indexevn(request):
     layout = 'vertical'
-
+    print request.session['codInvitacion']
     if request.method == 'POST':
         form = viewInvitacionForm(request.POST)
         if form.is_valid():
