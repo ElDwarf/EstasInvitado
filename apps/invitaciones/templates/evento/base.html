@@ -47,24 +47,28 @@
     </div>
 </div>
 </br>
+<div class="container-fluid">
 <!-- Docs nav
     ================================================== -->
-    <div class="row">
-      <div class="span3 bs-docs-sidebar">
+    <div class="row-fluid">
+      <div class="span2">
       <div class="well sidebar-nav">
         <ul class="nav nav-list bs-docs-sidenav">
-<li><a href="{% url homeevn %}" class=""><span class="new-wrapper"><i class="icon-home"></i></span> Index</a></li>
+                <li><a href="{% url homeevn %}" class=""><span class="new-wrapper"><i class="icon-home"></i></span> Index</a></li>
                 <li><a href="{% url galery %}" class=""><span class="new-wrapper"><i class="icon-picture"></i></span> Galeria</a></li>
                 <li><a href="{% url lugar %}" class=""><span class="new-wrapper"><i class="icon-glass"></i></span> El Lugar</a></li>
                 <li><a href="{% url confirmar %}" class=""><span class="new-wrapper"><i class="icon-thumbs-up"></i></span> Confirmar Presencia</a></li>
-                <li><a href="{% url tarjeta %}" class=""><span class="new-wrapper"><i class="icon-print"></i></span> Imprimir Tarjeta</a></li>        </ul>
+                <li><a href="{% url tarjeta %}" class=""><span class="new-wrapper"><i class="icon-print"></i></span> Imprimir Tarjeta</a></li></ul>
       </div>
       </div>
-<div class="container">
+
+    <div class="container">
+    <div class="span10 offset1">
 
     {% block content %}Empty page{% endblock %}
     <p><hr></p>
-
+</div>
+</div>
     <footer class="row">
         <div class="span6">
             <p>EstasInvitado.com.ar V 0.1</p>
@@ -81,8 +85,7 @@
             </p>
         </div>
     </footer>
-
+</div>
 </div> <!-- container -->
-
 </body>
 </html>
