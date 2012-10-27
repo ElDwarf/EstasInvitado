@@ -1,6 +1,6 @@
 # -*- coding: utf-8 *-*
 from django.contrib import admin
-from apps.invitaciones.models import Pais, Provincia, Localidad, Domicilio, Evento, Familia, Invitados, Galeria
+from apps.invitaciones.models import Pais, Provincia, Localidad, Domicilio, Evento, Familia, Invitados, Galeria, RelaInvitFlia
 
 
 class provinciaAdmin(admin.ModelAdmin):
@@ -33,6 +33,11 @@ class invitadosAdmin(admin.ModelAdmin):
     search_fields = ('familia__nombre', 'apellido', 'nombre', 'asiste',)
 
 
+class InfFliaAdmin(admin.ModelAdmin):
+    list_display = ('familia', 'invitacion',)
+    search_fields = ('familia', 'invitacion',)
+
+
 admin.site.register(Pais,)
 admin.site.register(Provincia, provinciaAdmin)
 admin.site.register(Localidad, localidadAdmin)
@@ -41,3 +46,4 @@ admin.site.register(Evento, eventoAdmin)
 admin.site.register(Familia, familiaAdmin)
 admin.site.register(Invitados, invitadosAdmin)
 admin.site.register(Galeria)
+admin.site.register(RelaInvitFlia, InfFliaAdmin)

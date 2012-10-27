@@ -1,8 +1,7 @@
 # -*- coding: utf-8 *-*
-from django.forms import ModelForm, Textarea, Select, TextInput, DateTimeInput
+from django.forms import ModelForm, Select, TextInput, DateTimeInput
 from django import forms
 from apps.invitaciones.models import Pais, Provincia, Localidad, Domicilio, Evento, Familia, Invitados
-from django.contrib.auth.models import User
 
 
 class newPaisForm(ModelForm):
@@ -56,7 +55,6 @@ class newDomicilioForm(ModelForm):
     class Meta:
         model = Domicilio
         widgets = {
-            'nombre': TextInput(),
             'calle': TextInput(),
             'numeracion': TextInput(),
             'piso': TextInput(),
@@ -64,7 +62,7 @@ class newDomicilioForm(ModelForm):
             'CodPostal': TextInput(),
             'localidad': Select(),
         }
-        fields = ('nombre', 'calle', 'numeracion', 'piso', 'departamento', 'CodPostal','localidad')
+        fields = ('calle', 'numeracion', 'piso', 'departamento', 'CodPostal','localidad')
 
 
 class newFamiliaForm(ModelForm):
@@ -104,7 +102,7 @@ class newEventoForm(ModelForm):
             'fechaevento': DateTimeInput(),
             'domicilio': Select(),
         }
-        fields = ('nombre', 'domicilio', 'fechaevento', 'description', 'mensajeinvitacion')
+        fields = ('nombre', 'domicilio', 'fechaevento', 'description')
 
 
 class viewInvitacionForm(ModelForm):

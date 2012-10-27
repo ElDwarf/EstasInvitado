@@ -1,8 +1,10 @@
 from django.contrib.auth import logout
+from django.http import HttpResponseRedirect
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+from apps.invitaciones.models import Evento, Familia, Galeria, Invitados
 from apps.invitaciones.forms import newPaisForm, newProvinciaForm, newLocalidadForm, newDomicilioForm, newFamiliaForm, newInvitadoForm, newEventoForm, viewInvitacionForm
 
 
@@ -22,20 +24,8 @@ def new_user(request):
 
 
 def logoutuser(request):
-    layout = 'vertical'
     logout(request)
-    if request.method == 'POST':
-        form = viewInvitacionForm(request.POST)
-        if form.is_valid():
-            request.session['codInvitacion'] = request.POST.get('codInvitacion', '')
-            print request.session['codInvitacion']
-    else:
-        form = viewInvitacionForm()
-    return render_to_response('index.html', RequestContext(request, {
-        'mensaje': 'El proyecto se dio del alta correctamente',
-        'form': form,
-        'layout': layout,
-        }))
+    return HttpResponseRedirect("/")
 
 
 @login_required
@@ -185,22 +175,38 @@ def view_invitacion(request):
 
 def index(request):
     layout = 'vertical'
-
     if request.method == 'POST':
         form = viewInvitacionForm(request.POST)
-        if form.is_valid():
-            request.session['codInvitacion'] = request.POST.get('codInvitacion', '')
-            print request.session['codInvitacion']
-        return render_to_response('evento/index.html', RequestContext(request, {
+        request.session['codInvitacion'] = request.POST.get('codInvitacion', '')
+        a = Familia.objects.filter(codInvitacion = request.session['codInvitacion'])
+        if len(a) > 0:
+            b = Evento.objects.filter(id = a[0].evento.id)
+            if len(a[0].evento.nombre) < 1:
+                form = viewInvitacionForm()
+                print a
+            if form.is_valid():
+                request.session['codInvitacion'] = request.POST.get('codInvitacion', '')
+                a = Familia.objects.filter(codInvitacion = request.session['codInvitacion'])
+                b = Evento.objects.filter(id = a[0].evento.id)
+                request.session['idEvento'] = a[0].id
+                request.session['DescripcionEvento'] = b[0].description
+            return render_to_response('evento/index.html', RequestContext(request, {
+                'mensaje': 'El proyecto se dio del alta correctamente',
+                'form': form,
+                'layout': layout,
+                }))
+        else:
+            return render_to_response('index.html', RequestContext(request, {
             'mensaje': 'El proyecto se dio del alta correctamente',
+            'alert': True,
             'form': form,
             'layout': layout,
             }))
-
     else:
         form = viewInvitacionForm()
     return render_to_response('index.html', RequestContext(request, {
         'mensaje': 'El proyecto se dio del alta correctamente',
+        'alert': False,
         'form': form,
         'layout': layout,
         }))
@@ -213,7 +219,6 @@ def indexevn(request):
         form = viewInvitacionForm(request.POST)
         if form.is_valid():
             request.session['codInvitacion'] = request.POST.get('codInvitacion', '')
-            print request.session['codInvitacion']
         return render_to_response('evento/index.html', RequestContext(request, {
             'mensaje': 'El proyecto se dio del alta correctamente',
             'form': form,
@@ -230,15 +235,21 @@ def indexevn(request):
 
 
 def galery(request):
-    return render_to_response('evento/galery.html', RequestContext(request, {
-        'mensaje': 'El proyecto se dio del alta correctamente',
-        }))
+    return render_to_response('evento/galery.html',
+        RequestContext(
+            request,
+            {'galeria': Galeria.objects.filter(evento__id = request.session['idEvento']),}
+            ),
+                )
 
 
 def confirmar(request):
-    return render_to_response('evento/confirmar.html', RequestContext(request, {
-        'mensaje': 'El proyecto se dio del alta correctamente',
-        }))
+    return render_to_response('evento/confirmar.html',
+        RequestContext(
+            request,
+            {'familia': Invitados.objects.filter(familia__codInvitacion = request.session['codInvitacion']),}
+            ),
+                )
 
 
 def lugar(request):

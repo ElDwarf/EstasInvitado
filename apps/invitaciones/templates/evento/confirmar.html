@@ -8,19 +8,28 @@
 
 {% block content %}
 
-    <h1>Confirmar Presencia</h1>
-    <p>&nbsp;</p>
+    <h1>Listado de Invitados:</h1>
     <form class="form-{{ layout }}" action="" method="post">
-        {% csrf_token %}
-        {% if layout == "horizontal" %}
+    {% csrf_token %}
+    <table class="table table-hover">
+    <tr>
+    <th>Apellido</th><th>Nombre</th><th>Confirma Asistencia</th>
+    </tr>
+
+    {% for invitado in familia %}
+            <tr>
+            <td>{{ invitado.nombre }} </td><td> {{ invitado.apellido }}</td><td><select name="confirmacion" id="{{ invitado.id }}"><option value="" selected="selected">--------</option><option value="Si">Si</option><option value="No">No</option></select></td>
+            </tr>
+    {% endfor %}
+    </table>
+    {% if layout == "horizontal" %}
             <p class="form-actions">
-                <input type="submit" value="Solicitar" class="btn btn-inverse">
+                <input type="submit" value="Grabar" class="btn btn-inverse">
             </p>
         {% else %}
-            <input type="submit" value="Solicitar" class="btn btn-inverse">
+            <input type="submit" value="Grabar" class="btn btn-inverse">
         {% endif %}
     </form>
 
-    <p>En caso de algun error al hacer Sudmit la pagina te retara.</p>
 
 {% endblock %}

@@ -27,7 +27,6 @@ class Localidad(models.Model):
 
 
 class Domicilio(models.Model):
-    nombre = models.TextField(max_length=30)
     calle = models.TextField(max_length=150)
     numeracion = models.TextField(max_length=5)
     piso = models.TextField(max_length=6)
@@ -45,7 +44,6 @@ class Evento(models.Model):
     domicilio = models.ForeignKey(Domicilio)
     description = models.TextField(max_length=200)
     fechacreacion = models.DateTimeField(default=datetime.datetime.now)
-    mensajeinvitacion = models.TextField(max_length=350)
     autor = models.ForeignKey(User, blank=True, null=True)
 
     def __unicode__(self):
@@ -89,6 +87,7 @@ class Invitados(models.Model):
 
 class Galeria(models.Model):
     evento = models.ForeignKey(Evento)
+    orden = models.TextField(max_length=2)
     nombre = models.TextField(max_length=10)
     descripcion = models.TextField(max_length=200)
     urlfoto = models.TextField()
@@ -97,10 +96,14 @@ class Galeria(models.Model):
         return "%s" %(self.nombre)
 
 
-
 class Invitacion(models.Model):
     evento = models.ForeignKey(Evento)
     mensaje1 = models.TextField(max_length=300)
     mensaje2 = models.TextField(max_length=300)
     mensaje3 = models.TextField(max_length=300)
     cuenta = models.TextField(max_length=20)
+
+
+class RelaInvitFlia(models.Model):
+    familia = models.ForeignKey(Familia)
+    invitacion = models.ForeignKey(Invitacion)

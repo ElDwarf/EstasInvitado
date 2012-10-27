@@ -14,7 +14,20 @@
     </div>
     {% else %}
     <div class="well" style="background: url(media/img/fondo.png) no-repeat center top;">
-    </br></br></br></br></br></br></br></br></br></br></br></br></br></br></br></br>
+    {% if alert %}
+            <div class="alert alert-error">
+              <a href="/" class="close" data-dismiss="alert">×</a>
+              <strong>Alerta!</strong> El codigo ingresado no es valido, por favor verificar.
+            </div>
+            <div class="alert alert-info">
+              <a href="/" class="close" data-dismiss="alert">×</a>
+              <strong>Tener en cuentra !</strong> Las letras deben ingresarse en mayuscula
+            </div>
+            </br></br></br>
+    {% else %}
+    </br></br></br></br></br></br></br></br></br>
+    {% endif %}
+    </br></br></br></br></br>
     <div class="row">
         <div class="span4">
         </div>
