@@ -15,10 +15,22 @@
     <tr>
     <th>Apellido</th><th>Nombre</th><th>Confirma Asistencia</th>
     </tr>
-
+    <div class="alert alert-info">
+    <strong>Tener en cuentra !</strong> Una vez confirmado el sistema bloqueara la opcion. </br>Por favor confirmar antes de 31 de enero del 2013
+    </div>
     {% for invitado in familia %}
             <tr>
-            <td>{{ invitado.nombre }} </td><td> {{ invitado.apellido }}</td><td><select name="confirmacion" id="{{ invitado.id }}"><option value="" selected="selected">--------</option><option value="Si">Si</option><option value="No">No</option></select></td>
+            <td>{{ invitado.nombre }} </td><td> {{ invitado.apellido }}</td><td>
+            {% if invitado.asiste == "Si" %}
+            <select name="{{ invitado.id }}" disabled>
+            <option value="" >--------</option><option value="Si" selected="selected">Si</option><option value="No">No</option></select></td>
+            {% elif invitado.asiste == "No" %}
+            <select name="{{ invitado.id }}" disabled>
+            <option value="">--------</option><option value="Si">Si</option><option value="No" selected="selected">No</option></select></td>
+            {% else %}
+            <select name="{{ invitado.id }}" >
+            <option value="" selected="selected">--------</option><option value="Si">Si</option><option value="No">No</option></select></td>
+            {% endif%}
             </tr>
     {% endfor %}
     </table>

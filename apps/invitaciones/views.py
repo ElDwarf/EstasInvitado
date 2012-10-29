@@ -214,7 +214,6 @@ def index(request):
 
 def indexevn(request):
     layout = 'vertical'
-    print request.session['codInvitacion']
     if request.method == 'POST':
         form = viewInvitacionForm(request.POST)
         if form.is_valid():
@@ -244,6 +243,26 @@ def galery(request):
 
 
 def confirmar(request):
+    if request.method == 'POST':
+        invitados = Invitados.objects.filter(familia__codInvitacion = request.session['codInvitacion'])
+        for invitado in invitados:
+            if invitado.asiste == 'Si' or invitado.asiste == 'No':
+                a = Invitados(id=str(invitado.id),
+                            familia = invitado.familia,
+                            nombre = invitado.nombre,
+                            apellido = invitado.apellido,
+                            asiste=invitado.asiste
+                            )
+            else:
+                a = Invitados(id=str(invitado.id),
+                    familia = invitado.familia,
+                    nombre = invitado.nombre,
+                    apellido = invitado.apellido,
+                    asiste=str(request.POST.get(str(invitado.id), ''))
+                    )
+            a.save(force_update=True)
+            print str(invitado.id) + str(request.POST.get(str(invitado.id), ''))
+
     return render_to_response('evento/confirmar.html',
         RequestContext(
             request,
