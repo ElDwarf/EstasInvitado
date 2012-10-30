@@ -11,6 +11,18 @@
     <h1>{{ title }} </h1>
     <p>&nbsp;</p>
     <form class="form-{{ layout }}" action="" method="post">
+        {% if Resultado != None %}
+            <div class="span4">
+                <div class="alert alert-success">
+                  <a href="#" class="close" data-dismiss="alert">×</a>
+                  <strong>Resultado: </strong> {{ Resultado }}
+                </div>
+            </div>
+            </br>
+            </br>
+            </br>
+            </br>
+        {% endif %}
         {% csrf_token %}
         {{ form|as_bootstrap:layout }}
         {% if layout == "horizontal" %}
@@ -21,7 +33,5 @@
             <input type="submit" value="Solicitar" class="btn btn-inverse">
         {% endif %}
     </form>
-
-    <p>En caso de algun error al hacer Sudmit la pagina te retara.</p>
 
 {% endblock %}

@@ -38,6 +38,13 @@ def write_pais(request):
             request.session['Pais'] = 'Pais: Argentina'
             new_req = form.save(commit=False)
             new_req.save()
+            form = newPaisForm()
+            return render_to_response('form.html', RequestContext(request, {
+            'form': form,
+            'layout': layout,
+            'Resultado': "El Pais se dio de alta correctamente",
+            'title': 'Alta de pais:',
+            }))
     else:
         form = newPaisForm()
     return render_to_response('form.html', RequestContext(request, {
@@ -56,6 +63,13 @@ def write_provincia(request):
         if form.is_valid():
             new_req = form.save(commit=False)
             new_req.save()
+            form = newProvinciaForm()
+            return render_to_response('form.html', RequestContext(request, {
+            'form': form,
+            'layout': layout,
+            'title': 'Alta de provincia:',
+            'Resultado': "La Provincia se dio de alta correctamente",
+            }))
     else:
         form = newProvinciaForm()
     return render_to_response('form.html', RequestContext(request, {
@@ -74,6 +88,13 @@ def write_localidad(request):
         if form.is_valid():
             new_req = form.save(commit=False)
             new_req.save()
+            form = newLocalidadForm()
+            return render_to_response('form.html', RequestContext(request, {
+            'form': form,
+            'layout': layout,
+            'title': 'Alta de localidad:',
+            'Resultado': "La Localidad se dio de alta correctamente",
+            }))
     else:
         form = newLocalidadForm()
     return render_to_response('form.html', RequestContext(request, {
@@ -92,6 +113,13 @@ def write_domicilio(request):
         if form.is_valid():
             new_req = form.save(commit=False)
             new_req.save()
+            form = newDomicilioForm()
+            return render_to_response('form.html', RequestContext(request, {
+            'form': form,
+            'layout': layout,
+            'title': 'Alta de Domicilio:',
+            'Resultado': "El Domicilio se dio de alta correctamente",
+            }))
     else:
         form = newDomicilioForm()
     return render_to_response('form.html', RequestContext(request, {
@@ -110,12 +138,19 @@ def write_familia(request):
         if form.is_valid():
             new_req = form.save(commit=False)
             new_req.save()
+            form = newFamiliaForm()
+            return render_to_response('form.html', RequestContext(request, {
+            'form': form,
+            'layout': layout,
+            'title': 'Alta de Familia:',
+            'Resultado': "La Familia se dio de alta correctamente",
+            }))
     else:
         form = newFamiliaForm()
     return render_to_response('form.html', RequestContext(request, {
         'form': form,
         'layout': layout,
-        'title': 'Alta de Domicilio:',
+        'title': 'Alta de Familia:',
         }))
 
 
@@ -128,12 +163,19 @@ def write_invitado(request):
         if form.is_valid():
             new_req = form.save(commit=False)
             new_req.save()
+            form = newInvitadoForm()
+            return render_to_response('form.html', RequestContext(request, {
+            'form': form,
+            'layout': layout,
+            'title': 'Alta de Invitado:',
+            'Resultado': "El Invitado se dio de alta correctamente",
+            }))
     else:
         form = newInvitadoForm()
     return render_to_response('form.html', RequestContext(request, {
         'form': form,
         'layout': layout,
-        'title': 'Alta de Domicilio:',
+        'title': 'Alta de Invitado:',
         }))
 
 
@@ -146,6 +188,13 @@ def write_evento(request):
         if form.is_valid():
             new_req = form.save(commit=False)
             new_req.save()
+            form = newEventoForm()
+            return render_to_response('form.html', RequestContext(request, {
+            'form': form,
+            'layout': layout,
+            'title': 'Alta de Evento:',
+            'Resultado': "El Evento se dio de alta correctamente",
+            }))
     else:
         form = newEventoForm()
     return render_to_response('form.html', RequestContext(request, {

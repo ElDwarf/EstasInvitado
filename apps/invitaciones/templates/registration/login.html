@@ -3,7 +3,10 @@
 {% block content %}
 
 {% if form.errors %}
-<p>El usuario o la clave ingresada no es correcto. Por favor vuelva a intentarlo.</p>
+<div class="alert alert-error">
+  <a href="/accounts/login/" class="close" data-dismiss="alert">×</a>
+  <strong>Atencion: </strong> El usuario o la clave ingresada no es correcto. Por favor vuelva a intentarlo.
+</div>
 {% endif %}
 
 <form method="post" action="{% url django.contrib.auth.views.login %}">
