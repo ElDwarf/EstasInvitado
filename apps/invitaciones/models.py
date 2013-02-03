@@ -62,7 +62,7 @@ class Familia(models.Model):
     domicilio = models.ForeignKey(Domicilio)
     email = models.TextField(max_length=150)
     telefono = models.TextField(max_length=150)
-    confirmado = models.TextField(max_length=2)
+    ingresaron = models.TextField(max_length=2, default='N')
     autor = models.ForeignKey(User, blank=True, null=True)
 
     def __unicode__(self):

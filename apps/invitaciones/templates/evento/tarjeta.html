@@ -7,20 +7,51 @@
 {% endblock %}
 
 {% block content %}
-
-    <h1>La Tarjeta</h1>
+    <div class="well" style="background: url(/media/img/fondo2.png) no-repeat center top;"><!--style="background: url(/media/img/fondoTarjeta.png) center top;"-->
+    <font color="grey">
+    <font color="#AD0B0B"><h1>Tips de un casamiento</h1></font>
     <p>&nbsp;</p>
-    <form class="form-{{ layout }}" action="" method="post">
-        {% csrf_token %}
-        {% if layout == "horizontal" %}
-            <p class="form-actions">
-                <input type="submit" value="Solicitar" class="btn btn-inverse">
-            </p>
-        {% else %}
-            <input type="submit" value="Solicitar" class="btn btn-inverse">
-        {% endif %}
-    </form>
-
-    <p>En caso de algun error al hacer Sudmit la pagina te retara.</p>
-
+    <h3>curiosidades de una Boda</h3>
+    <h5>Alianzas: </h5>
+    <p>Símbolo tradicional de lo ilimitado (eternidad). El rito de los anillos en el matrimonio fue tomado de la ceremonia pagana entre los romanos. Hace referencia a la fidelidad.</p>
+    <p>Las alianzas suelen ser lisas, de oro o platino y llevan en su interior los nombres grabados de los cónyuges con la fecha del enlace.</p>
+    <p>&nbsp;</p>
+    <h5>Tirar arroz:</h5>
+    <p>Desde la antigüedad el arroz es símbolo de la fecundidad o de la fertilidad. De ahí que se desprende la creencia de que el arroz significa el deseo de buena suerte para los nuevos esposos. Esta tradición simboliza la fertilidad que se les desea a los conyugues. Antiguamente se le tiraba a los novios granos de todo tipo lo cual significaba el deseo de de buena suerte, de prosperidad y especialmente fertilidad para los años por venir.</p>
+    <p>&nbsp;</p>
+    <h5>Torta nupcial:</h5>
+    <p>En la antigua Roma era tradición romper un pan sobre la cabeza de la novia como símbolo de fertilidad. Y en Inglaterra del medievo los invitados llevaban tortas como obsequio; estas se apilaban y luego los novios las besaban y las repartían entre las asistentes. De ahí proviene la torta de varios pisos.</p>
+    <p>&nbsp;</p>
+    <h5>Las Ligas:</h5>
+    <p>Desde un principio el rito de la liga estuvo vinculado a la virginidad y la pérdida de esta condición que implica el matrimonio. En Francia, a mediados del siglo XV, los hombres corrían detrás de la novia para quitarles las ligas. Con el paso del tiempo el novio se convirtió en el responsable de sacarle las ligas a su nueva esposa para tirárselas a los hombres solteros. Los que las alcanzaban serían los próximos en casarse. Actualmente la novia le entrega las ligas a sus mejores amigas.</p>
+    <p>&nbsp;</p>
+    <h5>La luna de miel</h5>
+    <p>En la antigüedad, fueron los Teutones quienes comenzaron con la práctica de la Luna de Miel. Las bodas solamente se celebraban bajo la Luna llena y después los novios bebían licor de miel durante 30 días. Finalmente, el período inmediatamente posterior a la boda llegó a conocerse con el nombre de Luna de Miel. Mientras el nombre sobrevivió, el propósito de la Luna de miel cambió, y después de la boda, los novios dejaban a su familia y amigos para hacer lo que tienen que hacer los recién casados. </p>
+    <p>&nbsp;</p>
+    <font color="#AD0B0B"><h3>Tradiciones de la Novia</h3></font>
+    <p>&nbsp;</p>
+    <h5>Vestido Blanco</h5>
+    <p>Hasta el siglo XIX las mujeres europeas se vestían de rojo, dorado y ¡hasta de negro! Ahora el blanco se asocia con la pureza y la virginidad y lo puso de moda en 1840 la Reina Victoria, que usó este color para casarse. </p>
+    <p>Según la tradición, es de mala suerte que la novia se haga su propio vestido, que se pruebe el atuendo completo el día anterior a la ceremonia y que el novio vea el vestido antes de la boda.</p>
+    <p>&nbsp;</p>
+    <h5>El Velo:</h5>
+    <p>El velo representa la modestia y la privacidad, y le aporta un aura de misterio a la futura esposa. En algunas culturas asiáticas el velo se utilizaba para ocultar el rostro de la novia hasta el momento de la ceremonia, para que el novio no pudiera rehusarse a cumplir con el matrimonio arreglado en el caso que ella no fuera de su agrado. En otras culturas también se creía que el velo protegía a la novia de la envidia y los malos espíritus.</p>
+    <p>&nbsp;</p>
+    <h5>Algo viejo, algo nuevo, algo prestado y algo azul.</h5>
+    <p>Esta antigua costumbre se ha mantenido hasta nuestros días. </p>
+    <p>Lo viejo simboliza la conexión de la novia con el pasado, la continuidad. Muchas novias eligen el velo, los guantes y las alhajas de sus madres y sus abuelas, para recibir la predisposición a la felicidad que han vivido ellas en sus años de casadas.</p>
+    <p>Lo nuevo es la nueva vida que los novios van a empezar. Usar algo nuevo augura un buen futuro, fortuna y éxito en la vida matrimonial</p>
+    <p>Lo prestado simboliza la creencia de que se podía atraer la felicidad usando algo prestado por una amigo/a que fuera feliz, a su vez representa la ayuda que la novia siempre podrá esperar de sus familiares y amigos. </p>
+    <p>Lo azul simboliza la fidelidad y la constancia en el futuro matrimonial de la pareja.</p>
+    <p>&nbsp;</p>
+    <h5>Tirar el ramo</h5>
+    <p>El ramo es una tradición que llega desde Egipto. Allí, las novias llevaban las hierbas de fuerte aroma para ahuyentar a los malos espíritus. La costumbre recorrió el mundo y las hierbas fueron sustituidas por flores. El tema de lanzar el ramo viene de la Francia del siglo XIV, donde se creía que la liga de la novia traía suerte y los invitados corrían detrás de ella para quitársela. Con el tiempo, para evitar esta “grosería”, las novias empezaron a tirar la liga voluntariamente, gesto que luego se trasladó al ramo.</p>
+    <p>&nbsp;</p>
+    <font color="#AD0B0B"><h3>Copas</h3></font>
+    <p>La de vino tinto más alta y voluminosa.</p>
+    <p>La de blanco, un poco más pequeña.</p>
+    <p>La de agua aún más pequeña que la anterior.</p>
+    <p>Y la de champagne, tipo flauta, más alta que las demás.</p>
+    </font>
+    </div>
 {% endblock %}

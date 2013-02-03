@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>EstasInvitado.com.ar</title>
+    <title>Nos Casamos!!!!</title>
     <meta name="description" content="">
     <meta name="author" content="Dalmasso Pablo">
     {% bootstrap_stylesheet_tag %}
@@ -12,35 +12,31 @@
             padding-top: 60px;
         }
     </style>
-    <!--[if lt IE 9]>
-    <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
     {% bootstrap_javascript_tag "dropdown" %}
     {% block extra_head %}{% endblock %}
-</head>
-
-<body>
-
-<div class="navbar navbar-inverse  navbar-fixed-top">
+</head> <!-- End Head-->
+<body style="background: #000000">
+<div class="navbar navbar navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="{% url home %}">EstasInvitado.com.ar</a>
+            <a class="brand" href="{% url home %}">VaneyPablo.com.ar</a>
             <ul class="nav">
                 <li><a href="{% url home %}" class=""><span class="new-wrapper"><i class="icon-home"></i></span> Index</a></li>
                     {% if user.is_authenticated %}
                         <li class="dropdown">
                             <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown">
-                            Evento
+                            <i class="icon-glass"></i></span> Evento
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
                             <li><a href="{% url write_evento %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nuevo Evento</a></li>
+                            <li><a href="{% url write_foto %}"><span class="new-wrapper"><i class="icon-camera"></i></span> Fotos Galeria</a></li>
                             </ul>
                         </li>
                         <li class="dropdown">
                             <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown">
-                            Invitados
+                            <i class="icon-star"></i></span> Invitados
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
@@ -50,14 +46,14 @@
                         </li>
                         <li class="dropdown">
                             <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown">
-                            Domicilio
+                            <i class="icon-road"></i></span> Domicilio
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
-                            <li><a href="{% url write_pais %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nuevo Pais</a></li>
-                            <li><a href="{% url write_provincia %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nueva Provincia</a></li>
-                            <li><a href="{% url write_localidad %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nueva Localidad</a></li>
-                            <li><a href="{% url write_domicilio %}"><span class="new-wrapper"><i class="icon-pencil"></i></span> Nuevo Domicilio</a></li>
+                            <li><a href="{% url write_pais %}"><span class="new-wrapper"><i class="icon-globe"></i></span> Nuevo Pais</a></li>
+                            <li><a href="{% url write_provincia %}"><span class="new-wrapper"><i class="icon-globe"></i></span> Nueva Provincia</a></li>
+                            <li><a href="{% url write_localidad %}"><span class="new-wrapper"><i class="icon-globe"></i></span> Nueva Localidad</a></li>
+                            <li><a href="{% url write_domicilio %}"><span class="new-wrapper"><i class="icon-globe"></i></span> Nuevo Domicilio</a></li>
                             </ul>
                         </li>
                     {% else %}
@@ -79,13 +75,13 @@
                         <li><a href="" > </a></li>
                         <li><a href="" > </a></li>
                         <li class="dropdown">
-                            <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown"><span class="new-wrapper"><i class="icon-user icon-white"></i>
+                            <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown"><span class="new-wrapper"><i class="icon-user"></i>
                             Usuario
                                 <b class="caret"></b>
                             </a>
                             <ul class="dropdown-menu">
                             <li><a href="/accounts/login/"><span class="new-wrapper"><i class="icon-user"></i></span> Login</a></li>
-                            <li><a href="{% url new_user %}"><span class="new-wrapper"><i class="icon-user"></i></span> Registrar</a></li>
+                            <!--<li><a href="{% url new_user %}"><span class="new-wrapper"><i class="icon-leaf"></i></span> Registrar</a></li>-->
                             </ul>
                         </li>
 
@@ -136,6 +132,5 @@
     </footer>
 
 </div> <!-- container -->
-
 </body>
 </html>

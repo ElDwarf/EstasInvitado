@@ -5,7 +5,7 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from apps.invitaciones.models import Evento, Familia, Galeria, Invitados
-from apps.invitaciones.forms import newPaisForm, newProvinciaForm, newLocalidadForm, newDomicilioForm, newFamiliaForm, newInvitadoForm, newEventoForm, viewInvitacionForm
+from apps.invitaciones.forms import newPaisForm, newProvinciaForm, newLocalidadForm, newDomicilioForm, newFamiliaForm, newInvitadoForm, newEventoForm, viewInvitacionForm, newPictureForm
 
 
 def new_user(request):
@@ -126,6 +126,31 @@ def write_domicilio(request):
         'form': form,
         'layout': layout,
         'title': 'Alta de Domicilio:',
+        }))
+
+
+@login_required
+def write_foto(request):
+    layout = 'vertical'
+
+    if request.method == 'POST':
+        form = newPictureForm(request.POST)
+        if form.is_valid():
+            new_req = form.save(commit=False)
+            new_req.save()
+            form = newPictureForm()
+            return render_to_response('form.html', RequestContext(request, {
+            'form': form,
+            'layout': layout,
+            'title': 'Alta nueva fotos:',
+            'Resultado': "La foto se dio de alta correctamente",
+            }))
+    else:
+        form = newPictureForm()
+    return render_to_response('form.html', RequestContext(request, {
+        'form': form,
+        'layout': layout,
+        'title': 'Alta nueva fotos:',
         }))
 
 
@@ -329,4 +354,57 @@ def lugar(request):
 def tarjeta(request):
     return render_to_response('evento/tarjeta.html', RequestContext(request, {
         'mensaje': 'El proyecto se dio del alta correctamente',
+        }))
+
+
+def ValidarIngreso(request):
+    layout = 'vertical'
+    if request.method == 'POST':
+        if request.POST.get('confirmado', '') == 'S':
+            a = Familia.objects.filter(codInvitacion = request.session['codInvitacion'])
+            if len(a) > 0:
+                b = Familia(id=str(a[0].id),
+                    evento=a[0].evento,
+                    nombre=a[0].nombre,
+                    description=a[0].description,
+                    date_created=a[0].date_created,
+                    codInvitacion=a[0].codInvitacion,
+                    domicilio=a[0].domicilio,
+                    email=a[0].email,
+                    telefono=a[0].telefono,
+                    ingresaron='S',
+                    autor=a[0].autor)
+                b.save(force_update=True)
+                request.session['codInvitacion'] = ""
+                form = viewInvitacionForm()
+                return render_to_response('form.html', RequestContext(request, {
+                    'title': 'Verificar Ingreso',
+                    'resultado': "Ingreso",
+                    'form': form,
+                    'layout': layout,
+                    }))
+        if request.POST.get('confirmado', '') == 'N':
+            request.session['codInvitacion'] = ""
+        request.session['codInvitacion'] = request.POST.get('codInvitacion', '')
+        a = Familia.objects.filter(codInvitacion = request.session['codInvitacion'])
+        if len(a):
+            asisten = a[0].ingresaron
+        else:
+            asisten = 'E'
+        inv = Invitados.objects.filter(familia__codInvitacion = request.POST.get('codInvitacion', ''))
+        return render_to_response('ResultadoAcceso.html', RequestContext(request, {
+            'title': 'Invitados',
+            'resultado': 'True',
+            'Asisten': asisten,
+            'invitados': inv,
+            }))
+    elif request.method == 'GET':
+        form = viewInvitacionForm()
+    else:
+        form = viewInvitacionForm()
+    return render_to_response('form.html', RequestContext(request, {
+        'title': 'Verificar Ingreso',
+        'resultado': "Ingreso",
+        'form': form,
+        'layout': layout,
         }))

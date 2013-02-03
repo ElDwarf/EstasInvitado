@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+
+{% load bootstrap_toolkit %}
+
+{% block content %}
+    <div class="well">
+    <h1>Resultado Ingreso</h1>
+    {% if Asisten = 'S' %}
+    <div class="alert alert-info">
+    <strong>Atencion: </strong> La familia ya ha Ingresado.
+    </div>
+    {% endif %}
+    {% if Asisten = 'E' %}
+    <div class="alert alert-error">
+    <strong>Atencion: </strong> El codigo ingresado no es correcto.
+    </div>
+    {% endif %}
+    <table class="table table-hover">
+    <tr>
+    <th>Nombre</th><th>Apellido</th><th></th>
+    </tr>
+    {% for invitado in invitados %}
+            <tr>
+            {% if invitado.asiste == "Si" %}
+            <td>{{ invitado.nombre }}</td><td>{{ invitado.apellido }}</td><td><div class="alert alert-error"><strong>Pago Pendiente</strong></div></td>
+            {% endif %}
+            {% if invitado.asiste == "Pa" %}
+            <td>{{ invitado.nombre }}</td><td>{{ invitado.apellido }}</td><td><div class="alert alert-info"><strong>OK</strong></td>
+            {% endif %}
+            </tr>
+    {% endfor %}
+    </table>
+    </br></br></br>
+    <div class="row">
+        <div class="span5">
+            <form method="GET">
+            {% csrf_token %}
+            <input type="hidden" name="confirmado" value="N">
+            {% if layout == "horizontal" %}
+                <p class="form-actions">
+                    <input type="submit" value="<< Volver" class="btn btn-inverse">
+                </p>
+            {% else %}
+                <input type="submit" value="<< Volver" class="btn btn-inverse">
+            {% endif %}
+            </form>
+        </div>
+        <div class="span65">
+        </div>
+        <div class="span2">
+            {% if Asisten != 'E' and Asisten != 'S'%}
+                <form method="post">
+                {% csrf_token %}
+                <input type="hidden" name="confirmado" value="S">
+                {% if layout == "horizontal" %} at
+                    <p class="form-actions">
+                        <input type="submit" value="Confirmar Ingreso" class="btn btn-inverse">
+                    </p>
+                {% else %}
+                    <input type="submit" value="Confirmar Ingreso" class="btn btn-inverse">
+                {% endif %}
+                </form>
+            {% endif %}
+        </div>
+    </div>
+    </div>
+{% endblock %}

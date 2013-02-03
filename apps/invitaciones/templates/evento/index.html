@@ -13,13 +13,28 @@
         </br>
     </div>
     {% else %}
-    <div class="well">
-        <h1>Esta es la invitacio a {{ request.session.DescripcionEvento }}</h1>
-        <p>Usted esta Formalmente invitado a ....</p>
+    <div class="well" style="background: url(media/img/fondoTarjeta.png) no-repeat center top; font-family: Tarjeta">
+        <font color="#929191" size = "6">
+        Cuando nos conocimos bien, nos dimos cuenta que nacimos<br> el uno
+        para el otro... quién, sino, podría aguantarnos?<br>
+        <br>Entonces,  después de 8 años, 6 meses y 25 dias...<br><br><br>
+        <font color="black"><i>________</font><font size = "10">...al fin nos casamos !!!<br><br></font>
+        y queremos que las personas  que nos acompañaron en <br>nuestras
+        vidas formen parte del megaevento del año <br>donde nos uniremos para siempre...
+        <br><br><br><font color="black"><i>_________________</font>Vane y Pablo
         </br>
         </br>
         </br>
         </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </font>
     </div>
     <!--<iframe width="100%" height="550px" scrolling="no" frameborder="0" src="{% url view_invitacion %}" target="_top"> </iframe>-->
     {% endif %}
@@ -42,10 +57,10 @@
         </div>
         <div class="span4">
         <div class="well">
-            <h3>Alta de Usuario</h3>
-            <p>Para poder registrar requerimiento o ver los existentes requerira tener un usuario registrado</p>
+            <h3>Validar Ingresos</h3>
+            <p>Esta opción permitira verificar cuales son los invitados que asistiran al evento</p>
             </br>
-            <p><a class="btn btn-inverse" href="#">Darme de Alta &raquo;</a></p>
+            <p><a class="btn btn-inverse" href="{% url ValidarIngreso %}">Validar Ingreso &raquo;</a></p>
         </div>
         </div>
     </div>

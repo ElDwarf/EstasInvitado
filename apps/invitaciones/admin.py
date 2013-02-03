@@ -24,8 +24,8 @@ class eventoAdmin(admin.ModelAdmin):
 
 
 class familiaAdmin(admin.ModelAdmin):
-    list_display = ('nombre', 'codInvitacion', 'evento', 'confirmado',)
-    search_fields = ('nombre', 'codInvitacion', 'evento', 'confirmado',)
+    list_display = ('nombre', 'codInvitacion', 'evento',)
+    search_fields = ('nombre', 'codInvitacion', 'evento',)
 
 
 class invitadosAdmin(admin.ModelAdmin):

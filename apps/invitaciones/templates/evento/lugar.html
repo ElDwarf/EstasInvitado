@@ -7,20 +7,30 @@
 {% endblock %}
 
 {% block content %}
-
+    <div class="well" ><!--style="background: url(/media/img/fondoTarjeta.png) center top;"-->
+    <font color="grey">
     <h1>El Lugar</h1>
     <p>&nbsp;</p>
-    <form class="form-{{ layout }}" action="" method="post">
-        {% csrf_token %}
-        {% if layout == "horizontal" %}
-            <p class="form-actions">
-                <input type="submit" value="Solicitar" class="btn btn-inverse">
-            </p>
-        {% else %}
-            <input type="submit" value="Solicitar" class="btn btn-inverse">
-        {% endif %}
-    </form>
-
-    <p>En caso de algun error al hacer Sudmit la pagina te retara.</p>
-
+    <h3>La Iglesia</h3>
+    Se toma al año 1607 como fecha fundacional de la capilla, pero en aquel entonces no era tal, sino una casa construida por los jesuitas radicados en Córdoba. Su propietario inicial fue el primer marido de doña Ana de Cevallos. </br>
+    Es Monumento Histórico Nacional desde 1953.</br>
+    Capilla Santa Ana<br>
+    Dirección: Bv. Quinta Santa Ana, Ciudad de Córdoba<br>
+    Horario: El 16 de Febrero del 2013 a las 20:30 Hs
+    <h4>Fotos</h4>
+    <img src="/media/img/Capilla-Santa-Ana.jpg">
+    <h4>Ubicación</h4>
+    <iframe width="650" height="350" frameborder="1" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.ar/maps/ms?t=m&amp;msa=0&amp;msid=212673631356084322936.0004d0e85bba0849c1d9a&amp;source=embed&amp;ie=UTF8&amp;ll=-31.411848,-64.204084&amp;spn=0.001008,0.001523&amp;output=embed"></iframe><br /><small>Ver <a href="https://maps.google.com.ar/maps/ms?t=m&amp;msa=0&amp;msid=212673631356084322936.0004d0e85bba0849c1d9a&amp;source=embed&amp;ie=UTF8&amp;ll=-31.411848,-64.204084&amp;spn=0.001008,0.001523" style="color:#0000FF;text-align:left">La Iglesia</a> en un mapa grande</small>
+    <br>
+    <hr>
+    <h3>El Salón</h3>
+    Salón Raphael<br>
+    Dirección: Av. Rafael Nuñez 5241, Ciudad de Córdoba<br>
+    Horario: El 16 de Febrero del 2013 a las 21:00 Hs
+    <h4>Fotos</h4>
+    <img src="/media/img/pics_header.jpg">
+    <h4>Ubicación</h4>
+    <iframe width="650" height="350" frameborder="1" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com.ar/maps/ms?ie=UTF8&amp;hl=en&amp;oe=UTF8&amp;msa=0&amp;msid=212673631356084322936.0004d0e83d50f9281e4bc&amp;ll=-31.355465,-64.243401&amp;spn=0,0&amp;t=m&amp;output=embed"></iframe><br /><small>Ver <a href="https://maps.google.com.ar/maps/ms?ie=UTF8&amp;hl=en&amp;oe=UTF8&amp;msa=0&amp;msid=212673631356084322936.0004d0e83d50f9281e4bc&amp;ll=-31.355465,-64.243401&amp;spn=0,0&amp;t=m&amp;source=embed" style="color:#0000FF;text-align:left">El Salon Raphael</a> en un mapa grande</small>
+    </font>
+    </div>
 {% endblock %}

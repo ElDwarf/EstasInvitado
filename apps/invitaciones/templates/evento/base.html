@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>EstasInvitado.com.ar</title>
+    <title>Nos Casamos!!!!</title>
     <meta name="description" content="">
     <meta name="author" content="Dalmasso Pablo">
     {% bootstrap_stylesheet_tag %}
@@ -17,21 +17,95 @@
     <![endif]-->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
     {% bootstrap_javascript_tag "dropdown" %}
+    {% bootstrap_javascript_tag "carousel" %}
+    {% bootstrap_javascript_tag "transition" %}
+    {% bootstrap_javascript_tag "modal" %}
+
+    <script type="text/javascript">myCarousel$('.carousel').carousel({interval: 300})</script>
+    <link rel="stylesheet" href="/media/css/style.css" type="text/css" media="screen"/>
     {% block extra_head %}{% endblock %}
 </head>
-
+<style>
+        body{
+            background:#E6E6E6 url(title.png) no-repeat top left;
+            font-family:Arial,Helvetica,sans-serif;
+        }
+        span.reference{
+            position:fixed;
+            right:20px;
+            top:10px;
+            font-size:10px;
+            text-transform:uppercase;
+        }
+        span.reference a{
+            color:#aaa;
+            text-decoration:none;
+            text-shadow:1px 1px 1px #fff;
+        }
+        span.reference a:hover{
+            color:#000;
+        }
+        .content{
+            margin: 100px auto 0px auto;
+            background-color:#3d3d3d;
+            color:#fff;
+            text-transform:uppercase;
+            font-size:10px;
+            border:1px solid #222;
+            padding:30px;
+            -moz-box-shadow:0px 0px 8px #444;
+            -webkit-box-shadow:0px 0px 8px #444;
+            box-shadow:0px 0px 8px #444;
+            -moz-border-radius:10px;
+            -webkit-border-radius:10px;
+            border-radius:10px;
+            text-shadow:1px 1px 1px #000;
+            opacity:0.9;
+        }
+        .content a{
+            color:#ddd;
+            font-weight:bold;
+            text-decoration:none;
+        }
+        .content a:hover{
+            color:#fff;
+        }
+        .content h2{
+            font-weight:normal;
+            text-shadow:0px 0px 1px #777;
+        }
+        .arrow{
+            width:311px;
+            height:200px;
+            position:fixed;
+            bottom:10px;
+            left:100px;
+            background:transparent url(arrow.png) no-repeat top left;
+        }
+    </style>
 <body>
+<!--<body style="background: url(media/img/fondo1.jpg) no-repeat center top;">-->
 
+<!-- ============================= Menu Nav Bar ============================= -->
 <div class="navbar navbar-inverse navbar-fixed-top">
     <div class="navbar-inner">
         <div class="container">
-            <a class="brand" href="{% url home %}">EstasInvitado.com.ar</a>
+        <button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+            <a class="brand" href="{% url home %}">VaneyPablo.com.ar</a>
             <ul class="nav">
                 <li><a href="{% url homeevn %}" class=""><span class="new-wrapper"><i class="icon-home icon-white"></i></span> Index</a></li>
-                <li><a href="{% url galery %}" class=""><span class="new-wrapper"><i class="icon-picture icon-white"></i></span> Galeria</a></li>
-                <li><a href="{% url lugar %}" class=""><span class="new-wrapper"><i class="icon-glass icon-white"></i></span> El Lugar</a></li>
-                <li><a href="{% url confirmar %}" class=""><span class="new-wrapper"><i class="icon-thumbs-up icon-white"></i></span> Confirmar Presencia</a></li>
-                <li><a href="{% url tarjeta %}" class=""><span class="new-wrapper"><i class="icon-print icon-white"></i></span> Imprimir Tarjeta</a></li>
+                <!--<li><a href="{% url galery %}" class=""><span class="new-wrapper"><i class="icon-picture icon-white"></i></span> Galeria</a></li>-->
+                <li><a href="{% url lugar %}" class=""><span class="new-wrapper"><i class="icon-map-marker icon-white"></i></span> El Lugar</a></li>
+                <li><a href="{% url confirmar %}" class=""><span class="new-wrapper"><i class="icon-ok icon-white"></i></span> Confirmar Presencia</a></li>
+                <li><a href="{% url tarjeta %}" class=""><span class="new-wrapper"><i class="icon-info-sign icon-white"></i></span> Tips</a></li>
+                <li><a href="" > </a></li>
+                <li><a href="" > </a></li>
+                <li><a href="" > </a></li>
+                <li><a href="" > </a></li>
                 <li class="dropdown">
                     <a href="{% url home %}" class="dropdown-toggle" data-toggle="dropdown"><span class="new-wrapper"><i class="icon-user icon-white"></i>
                     Usuario
@@ -39,7 +113,7 @@
                     </a>
                     <ul class="dropdown-menu">
                     <li><a href="/accounts/login/"><span class="new-wrapper"><i class="icon-user"></i></span> Login</a></li>
-                    <li><a href="{% url new_user %}"><span class="new-wrapper"><i class="icon-user"></i></span> Registrar</a></li>
+                    <!--<li><a href="{% url new_user %}"><span class="new-wrapper"><i class="icon-user"></i></span> Registrar</a></li>-->
                     </ul>
                 </li>
             </ul>
@@ -48,27 +122,32 @@
 </div>
 </br>
 <div class="container-fluid">
-<!-- Docs nav
-    ================================================== -->
+<!-- ============================= Docs nav ============================= -->
     <div class="row-fluid">
       <div class="span2">
       <div class="well sidebar-nav">
         <ul class="nav nav-list bs-docs-sidenav">
                 <li><a href="{% url homeevn %}" class=""><span class="new-wrapper"><i class="icon-home"></i></span> Index</a></li>
-                <li><a href="{% url galery %}" class=""><span class="new-wrapper"><i class="icon-picture"></i></span> Galeria</a></li>
-                <li><a href="{% url lugar %}" class=""><span class="new-wrapper"><i class="icon-glass"></i></span> El Lugar</a></li>
-                <li><a href="{% url confirmar %}" class=""><span class="new-wrapper"><i class="icon-thumbs-up"></i></span> Confirmar Presencia</a></li>
-                <li><a href="{% url tarjeta %}" class=""><span class="new-wrapper"><i class="icon-print"></i></span> Imprimir Tarjeta</a></li></ul>
+                <!--<li><a href="{% url galery %}" class=""><span class="new-wrapper"><i class="icon-picture"></i></span> Galeria</a></li>-->
+                <li><a href="{% url lugar %}" class=""><span class="new-wrapper"><i class="icon-map-marker"></i></span> El Lugar</a></li>
+                <li><a data-toggle="modal" href="#myModal"><span class="new-wrapper"><i class="icon-gift"></i></span> Pago de tarjeta</a></li>
+                <li><a href="{% url tarjeta %}" class=""><span class="new-wrapper"><i class="icon-info-sign"></i></span> Tips</a></li>
+                <li><a href="{% url confirmar %}" class=""><span class="new-wrapper"><i class="icon-ok"></i></span> Confirmar Presencia</a></li>
+        </ul>
       </div>
       </div>
-
     <div class="container">
-    <div class="span10 offset1">
-
+    <div class="span9 offset1">
+<!-- ============================= Contenido ============================= -->
     {% block content %}Empty page{% endblock %}
     <p><hr></p>
-</div>
-</div>
+    </div>
+</br>
+</br>
+</br>
+</br>
+</br>
+<!-- ============================= Pie de Pagina ============================= -->
     <footer class="row">
         <div class="span6">
             <p>EstasInvitado.com.ar V 0.1</p>
@@ -87,5 +166,71 @@
     </footer>
 </div>
 </div> <!-- container -->
+<!-- ============================= Modals ============================= -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+              <h3 id="myModalLabel">Informacion de Pago</h3>
+            </div>
+            <div class="modal-body">
+              <p>El monto de la tarjeta es de $270</p>
+              <hr>
+              <h4>Informacion de la cuenta para pagar la tarjeta</h4>
+              <p>Titular: Dalmasso Pablo</p>
+              <p>Cuil: 20-32035630-0</p>
+              <p>Nro Cuenta: Cuenta Unica 390-351136/5</p>
+              <p>CBU: 0720390788000035113654</p>
+            </div>
+            <div class="modal-footer">
+              <button class="btn" data-dismiss="modal">Cerrar</button>
+              <!--<button class="btn btn-primary">Save changes</button>-->
+            </div>
+          </div>
+          <div>
+<!-- ============================= Galeria de fotos ============================= -->
+        <div class="flickr_photobar">
+            <div id="flickr_overlay" class="overlay" style="display:none;"></div>	
+            <div id="flickr_photopreview" class="photopreview" style="display:none;">
+                <div class="preview_wrapper">
+                    <div class="preview">
+                        <div class="loading"></div>
+                        <div id="preview_close" class="close"></div>
+                        <span id="large_phototitle"></span>
+                        <!--image-->
+                        <a href="#" id="preview_img_next" class="img_next"></a>
+                        <a href="#" id="preview_img_prev" class="img_prev"></a>
+                    </div>
+                </div>
+            </div>
+            <div id="photobar" class="photobar">	
+                <div class="thumbs albums" id="sets">
+                    <a href="#" class="prev"></a>
+                    <div class="thumbsWrapper">
+                        <ul></ul>
+                    </div>
+                    <a href="#" class="next"></a>
+                </div>
+                <div class="thumbs images" id="images" style="bottom:-125px;">
+                    <a href="#" class="prev"></a>
+                    <div class="thumbsWrapper">
+                        <ul></ul>
+                    </div>
+                    <a href="#" class="next"></a>
+                    <span class="images_toggle">
+                        Galeria:
+                        <span id="setName"></span>
+                        <a id="images_toggle">Volver Atras</a>
+                    </span>
+                </div>
+                <a id="flickr_toggle" class="toggle">
+                    Nuestras Fotos
+                    <span style="visibility:hidden;" class="loading_small"></span>
+                </a>
+            </div>
+        </div>
+        <!-- The JavaScript -->
+        <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+        <script src="/media/jquery.viewport.js" type="text/javascript"></script>
+        <script src="/media/jquery.FlickrPhotobar.js" type="text/javascript"></script>
 </body>
 </html>

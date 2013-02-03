@@ -7,7 +7,8 @@
 {% endblock %}
 
 {% block content %}
-
+    <div class="well" ><!--style="background: url(/media/img/fondoTarjeta.png) center top;"-->
+    <font color="grey">
     <h1>Listado de Invitados:</h1>
     <form class="form-{{ layout }}" action="" method="post">
     {% csrf_token %}
@@ -16,12 +17,12 @@
     <th>Apellido</th><th>Nombre</th><th>Confirma Asistencia</th>
     </tr>
     <div class="alert alert-info">
-    <strong>Tener en cuentra !</strong> Una vez confirmado el sistema bloqueara la opcion. </br>Por favor confirmar antes de 31 de enero del 2013
+    <strong>Tener en cuentra !</strong> Una vez confirmado el sistema bloqueara la opcion. </br>Por favor confirmar antes de 10 de febrero del 2013
     </div>
     {% for invitado in familia %}
             <tr>
             <td>{{ invitado.nombre }} </td><td> {{ invitado.apellido }}</td><td>
-            {% if invitado.asiste == "Si" %}
+            {% if invitado.asiste == "Si" or invitado.asiste == "Pa" %}
             <select name="{{ invitado.id }}" disabled>
             <option value="" >--------</option><option value="Si" selected="selected">Si</option><option value="No">No</option></select></td>
             {% elif invitado.asiste == "No" %}
@@ -42,6 +43,7 @@
             <input type="submit" value="Grabar" class="btn btn-inverse">
         {% endif %}
     </form>
-
+    </font>
+    </div>
 
 {% endblock %}

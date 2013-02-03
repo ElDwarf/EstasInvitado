@@ -61,4 +61,9 @@ urlpatterns = patterns('',
         'apps.invitaciones.views.lugar', name='lugar'),
     url(r'^tarjeta/$',
         'apps.invitaciones.views.tarjeta', name='tarjeta'),
+    url(r'^write_foto/$',
+        'apps.invitaciones.views.write_foto', name='write_foto'),
+    url(r'^ValidarIngreso/$',
+        'apps.invitaciones.views.ValidarIngreso', name='ValidarIngreso'),
+
 )

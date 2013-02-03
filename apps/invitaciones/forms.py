@@ -1,7 +1,6 @@
 # -*- coding: utf-8 *-*
-from django.forms import ModelForm, Select, TextInput, DateTimeInput
-from django import forms
-from apps.invitaciones.models import Pais, Provincia, Localidad, Domicilio, Evento, Familia, Invitados
+from django.forms import ModelForm, Select, TextInput, DateTimeInput, Textarea
+from apps.invitaciones.models import Pais, Provincia, Localidad, Domicilio, Evento, Familia, Invitados, Galeria
 
 
 class newPaisForm(ModelForm):
@@ -105,10 +104,42 @@ class newEventoForm(ModelForm):
         fields = ('nombre', 'domicilio', 'fechaevento', 'description')
 
 
+class newPictureForm(ModelForm):
+
+    def __init__(self, *args, **kwargs):
+        super(newPictureForm, self).__init__(*args, **kwargs)
+        self.fields['evento'].label = "Seleccione el Evento"
+        self.fields['orden'].label = "Ingrese la posicion (solo numeros)"
+        self.fields['nombre'].label = "Ingrese el nombre de la foto"
+        self.fields['descripcion'].label = "Ingrese la descripcion de la foto"
+        self.fields['urlfoto'].label = "Ingrese la URL de la foto"
+        self.fields['evento'].error_messages = {
+            'required': 'Debe seleccionar un evento'}
+        self.fields['orden'].error_messages = {
+            'required': 'El campo es requerido'}
+        self.fields['nombre'].error_messages = {
+            'required': 'El campo es requerido'}
+        self.fields['descripcion'].error_messages = {
+            'required': 'El campo es requerido'}
+        self.fields['urlfoto'].error_messages = {
+            'required': 'El campo es requerido'}
+
+    class Meta:
+        model = Galeria
+        widgets = {
+            'evento': Select(),
+            'orden': TextInput(),
+            'nombre': TextInput(),
+            'descripcion': Textarea(),
+            'urlfoto': TextInput(),
+        }
+        fields = ('evento', 'orden', 'nombre', 'descripcion', 'urlfoto',)
+
+
 class viewInvitacionForm(ModelForm):
     def __init__(self, *args, **kwargs):
         super(viewInvitacionForm, self).__init__(*args, **kwargs)
-        self.fields['codInvitacion'].label = "Ingrese el codigo de su invitacion"
+        self.fields['codInvitacion'].label = "Código de invitación"
 
     class Meta:
         model = Familia

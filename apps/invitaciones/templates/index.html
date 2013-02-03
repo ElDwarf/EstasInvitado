@@ -14,6 +14,18 @@
     </div>
     {% else %}
     <div class="well" style="background: url(media/img/fondo.png) no-repeat center top;">
+    <h1>{{ title }}</h1>
+        <form class="form-{{ layout }}" action="" method="post">
+        {% csrf_token %}
+        {{ form|as_bootstrap:layout }}
+        {% if layout == "horizontal" %}
+            <p class="form-actions">
+                <input type="submit" value="Consultar" class="btn btn-danger">
+            </p>
+        {% else %}
+            <input type="submit" value="Consultar" class="btn btn-danger">
+        {% endif %}
+        </form>
     {% if alert %}
             <div class="alert alert-error">
               <a href="/" class="close" data-dismiss="alert">×</a>
@@ -28,18 +40,7 @@
         <div class="span4">
         </div>
         <div class="span4">
-        <h1>{{ title }}</h1>
-        <form class="form-{{ layout }}" action="" method="post">
-        {% csrf_token %}
-        {{ form|as_bootstrap:layout }}
-        {% if layout == "horizontal" %}
-            <p class="form-actions">
-                <input type="submit" value="Consultar" class="btn btn-danger">
-            </p>
-        {% else %}
-            <input type="submit" value="Consultar" class="btn btn-danger">
-        {% endif %}
-    </form>
+
         </div>
         <div class="span4">
         </div>
@@ -53,7 +54,7 @@
     <div class="row">
         <div class="span4">
         <div class="well">
-            <h3>Generar Evnetos</h3>
+            <h3>Generar Eventos</h3>
             <p>Este sistema le permitira mantenerce en contacto con su proveedor permitiendole registrar sus nececidades de forma agil y facil.</p>
             <p><a class="btn btn-inverse" href="{% url write_evento %}">Organizar...</a></p>
         </div>
@@ -63,19 +64,18 @@
             <h3>Lista invitados</h3>
             <p>Contara con una lista ordenada y gestionable de los requerimientos que tiene su cliente.</p>
             </br>
-            <p><a class="btn btn-inverse" href="#    ">Ver Requerimientos &raquo;</a></p>
+            <p><a class="btn btn-inverse" href="#    ">Listar Invitados &raquo;</a></p>
         </div>
         </div>
         <div class="span4">
         <div class="well">
-            <h3>Alta de Usuario</h3>
-            <p>Para poder registrar requerimiento o ver los existentes requerira tener un usuario registrado</p>
-            </br>
-            <p><a class="btn btn-inverse" href="#">Darme de Alta &raquo;</a></p>
+            <h3>Validar Ingresos</h3>
+            <p>Esta opción permitira verificar cuales son los invitados que asistiran al evento</p>
+            </br></br>
+            <p><a class="btn btn-inverse" href="{% url ValidarIngreso %}">Validar Ingreso &raquo;</a></p>
         </div>
         </div>
     </div>
-
     <p>Espero lo que lo disfrutes mucho.</p>
     {% endif %}
 {% endblock %}

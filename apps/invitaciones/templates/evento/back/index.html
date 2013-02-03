@@ -1,0 +1,69 @@
+{% extends "evento/base.html" %}
+
+{% load bootstrap_toolkit %}
+
+{% block content %}
+    {% if user.is_authenticated %}
+    <div class="well">
+        <h1>EstasInvitado.com.ar</h1>
+        <p>EstasInvitado.com.ar, es un sistema que te permite generar tarjetas virtuales, bla, bla</p>
+        </br>
+        </br>
+        </br>
+        </br>
+    </div>
+    {% else %}
+    <div class="well" style="background: url(/media/img/fondoTarjeta.png) no-repeat center top; font-family: Tarjeta">
+        <font color="#929191">
+        <h3>Cuando nos conocimos bien, nos dimos cuenta que nacimos el uno para el <br>
+        otro... ... quien, sino, podria aguantarnos?</h3><br>
+        <h3>Entonces,  despues de 8 anios, 6 meses y 25 dias...</h5>
+        <h2><font color="black"><i>__________</font>...al fin nos casamos !!!</i></h2><br>
+        <h3>y queremos que las personas  que nos acompaniaron en nuestras vidas
+         <br>formen parte del megaevento del anio donde nos uniremos para siempre...</h3>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </br>
+        </font>
+    </div>
+    <!--<iframe width="100%" height="550px" scrolling="no" frameborder="0" src="{% url view_invitacion %}" target="_top"> </iframe>-->
+    {% endif %}
+    {% if user.is_authenticated %}
+    <div class="row">
+        <div class="span4">
+        <div class="well">
+            <h3>Generar Evnetos</h3>
+            <p>Este sistema le permitira mantenerce en contacto con su proveedor permitiendole registrar sus nececidades de forma agil y facil.</p>
+            <p><a class="btn btn-inverse" href="{% url write_evento %}">Organizar...</a></p>
+        </div>
+        </div>
+        <div class="span4">
+        <div class="well">
+            <h3>Lista invitados</h3>
+            <p>Contara con una lista ordenada y gestionable de los requerimientos que tiene su cliente.</p>
+            </br>
+            <p><a class="btn btn-inverse" href="#    ">Ver Requerimientos &raquo;</a></p>
+        </div>
+        </div>
+        <div class="span4">
+        <div class="well">
+            <h3>Validar Ingresos</h3>
+            <p>Esta opcion permitira verificar cuales son los invitados que asistiran al evento</p>
+            </br>
+            <p><a class="btn btn-inverse" href="{% url ValidarIngreso %}">Validar Ingreso &raquo;</a></p>
+        </div>
+        </div>
+    </div>
+
+    <p>Espero lo que lo disfrutes mucho.</p>
+    {% endif %}
+{% endblock %}
